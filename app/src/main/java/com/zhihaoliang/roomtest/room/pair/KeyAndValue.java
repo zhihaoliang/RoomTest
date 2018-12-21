@@ -1,9 +1,10 @@
-package com.zhihaoliang.roomtest.room.keyAvalue;
+package com.zhihaoliang.roomtest.room.pair;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 /**
  * 创建日期：2018/12/18
@@ -27,20 +28,22 @@ public class KeyAndValue {
     public static final String FRIST_LOAD="fristLoad";
 
     @PrimaryKey
-    @ColumnInfo(name = "KEY")
-    private String key;
+    @NonNull
+    @ColumnInfo(name = "_KEY")
+    private String key = "key";
 
-    @ColumnInfo(name = "VALUE")
+    @ColumnInfo(name = "_VALUE")
     private String value;
 
     @Ignore
     private boolean isSelect;
 
+    @NonNull
     public String getKey() {
         return key;
     }
 
-    public void setKey(String key) {
+    public void setKey(@NonNull String key) {
         this.key = key;
     }
 
@@ -61,7 +64,7 @@ public class KeyAndValue {
     }
 
     public boolean isValue(){
-        return "TURE_KEY".equals(TURE_KEY);
+        return value.equals(TURE_KEY);
     }
 
 
