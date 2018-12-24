@@ -74,19 +74,19 @@ public class MainActivity extends AppCompatActivity {
                 return initKeyAndValue();
             }
         }).observeOn(Schedulers.io())
-                .map(new Function<KeyAndValue, Long>() {
+                .map(new Function<KeyAndValue, Integer>() {
                     @Override
-                    public Long apply(KeyAndValue keyAndValue) {
+                    public Integer apply(KeyAndValue keyAndValue) {
                         AppDatabase appDatabase = AppDatabase.instance(getApplication());
                         KeyAndValueDao keyAndValueDao = appDatabase.getKeyAndValueDao();
                         return keyAndValueDao.delete(keyAndValue);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Long>() {
+                .subscribe(new Consumer<Integer>() {
                     @Override
-                    public void accept(Long num) {
-                        Logger.e("num %s", num);
+                    public void accept(Integer num) {
+                        Logger.e("num %d", num);
                     }
                 });
     }
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Consumer<Long>() {
                     @Override
                     public void accept(Long num) {
-                        Logger.e("num %s", num);
+                        Logger.e("num %d", num);
                     }
                 });
     }
