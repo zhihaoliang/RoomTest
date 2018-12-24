@@ -45,10 +45,14 @@ public class MainActivity extends AppCompatActivity {
             case R.id.update:
             case R.id.add:
                 if (TextUtils.isEmpty(mETKey.getText().toString()) || TextUtils.isEmpty(mETValue.getText().toString())) {
-                    insertOrUpdate();
+                    return;
                 }
+                insertOrUpdate();
                 break;
             case R.id.del:
+                if (TextUtils.isEmpty(mETKey.getText().toString())) {
+                    return;
+                }
                 del();
                 break;
             default:
@@ -63,7 +67,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void del() {
-
+        Observable.create(new ObservableOnSubscribeCommon<KeyAndValue>() {
+            @Override
+            public KeyAndValue initSubscribeCont() {
+                return initKeyAndValue();
+            }
+        }).observeOn(Schedulers.io())
+                .map(new Function<KeyAndValue, Long>() {
+                    @Override
+                    public Long apply(KeyAndValue keyAndValue) {
+                        AppDatabase appDatabase = AppDatabase.instance(getApplication());
+                        KeyAndValueDao keyAndValueDao = appDatabase.getKeyAndValueDao();
+                        return Long.valueOf(keyAndValueDao.delete(keyAndValue));
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long num) {
+                        Logger.e("num %s", num);
+                    }
+                });
     }
 
 

@@ -1,6 +1,7 @@
 package com.zhihaoliang.roomtest.room.pair;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
@@ -26,5 +27,8 @@ public interface KeyAndValueDao {
 
     @Update
     int update(KeyAndValue keyAndValue);
+
+    @Delete
+    int delete(KeyAndValue keyAndValue);
 
 }
