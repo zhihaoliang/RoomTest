@@ -29,6 +29,6 @@ public interface KeyAndValueDao {
     int update(KeyAndValue keyAndValue);
 
     @Delete
-    int delete(KeyAndValue keyAndValue);
+    long delete(KeyAndValue keyAndValue);
 
 }

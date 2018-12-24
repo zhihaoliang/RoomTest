@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 insertOrUpdate();
                 break;
             case R.id.del:
-                if (TextUtils.isEmpty(mETKey.getText().toString())) {
+                if (TextUtils.isEmpty(mETKey.getText().toString())){
                     return;
                 }
                 del();
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("CheckResult")
     private void del() {
         Observable.create(new ObservableOnSubscribeCommon<KeyAndValue>() {
             @Override
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     public Long apply(KeyAndValue keyAndValue) {
                         AppDatabase appDatabase = AppDatabase.instance(getApplication());
                         KeyAndValueDao keyAndValueDao = appDatabase.getKeyAndValueDao();
-                        return Long.valueOf(keyAndValueDao.delete(keyAndValue));
+                        return keyAndValueDao.delete(keyAndValue);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -114,8 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     public Long apply(KeyAndValue keyAndValue) {
                         AppDatabase appDatabase = AppDatabase.instance(getApplication());
                         KeyAndValueDao keyAndValueDao = appDatabase.getKeyAndValueDao();
-                        long num = isInsert ? keyAndValueDao.insert(keyAndValue) : keyAndValueDao.update(keyAndValue);
-                        return Long.valueOf(num);
+                        return isInsert ? keyAndValueDao.insert(keyAndValue) : keyAndValueDao.update(keyAndValue);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-
+    @SuppressLint("CheckResult")
     private void read(final ReadCallBack readCallBack) {
         Observable.create(new ObservableOnSubscribeCommon<String>() {
             @Override

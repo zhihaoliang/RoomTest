@@ -22,10 +22,6 @@ public class KeyAndValue {
      * 表示false
      */
     public static final String FALSE_KEY = "N";
-    /**
-     * 判断是否是第一次进入
-     */
-    public static final String FRIST_LOAD="fristLoad";
 
     @PrimaryKey
     @NonNull

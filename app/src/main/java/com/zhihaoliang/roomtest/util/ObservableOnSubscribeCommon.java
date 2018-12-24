@@ -8,19 +8,19 @@ import io.reactivex.ObservableOnSubscribe;
  * 描述: 通用的观察者的发送者
  * 作者:支豪亮
  */
-public abstract class ObservableOnSubscribeCommon<T> implements ObservableOnSubscribe {
+public abstract class ObservableOnSubscribeCommon<T> implements ObservableOnSubscribe<T> {
 
-    public ObservableOnSubscribeCommon(){
+    protected ObservableOnSubscribeCommon(){
 
     }
 
     @Override
-    public void subscribe(ObservableEmitter emitter) throws Exception {
+    public void subscribe(ObservableEmitter emitter)  {
         emitter.onNext(initSubscribeCont());
     }
 
 
-    public abstract T initSubscribeCont();
+    protected abstract T initSubscribeCont();
 
 
 }
