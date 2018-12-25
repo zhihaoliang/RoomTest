@@ -20,6 +20,9 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mEventHandlers = onEventHandlers();
+        for (EventHandler eventHandler : mEventHandlers) {
+            EventBus.getDefault().register(eventHandler);
+        }
     }
 
     /**
@@ -36,15 +39,13 @@ public class EventActivity extends AppCompatActivity {
      * 返回参数是EventHandler数组，每一类Event需要一个EventHandler
      */
     public BaseActivity.EventHandler[] onEventHandlers() {
-        return null;
+        return new EventHandler[0];
     }
 
     @Override
     protected void onDestroy() {
-        if (mEventHandlers != null) {
-            for (EventHandler eventHandler : mEventHandlers) {
-                EventBus.getDefault().unregister(eventHandler);
-            }
+        for (EventHandler eventHandler : mEventHandlers) {
+            EventBus.getDefault().unregister(eventHandler);
         }
         super.onDestroy();
     }
