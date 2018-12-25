@@ -1,6 +1,7 @@
 package com.zhihaoliang.roomtest.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 del();
+                break;
+            case R.id.jumpSecond:
+                Intent intent = new Intent(this,MainActivity.class);
+                startActivity(intent);
                 break;
             default:
                 read(new ReadCallBack() {

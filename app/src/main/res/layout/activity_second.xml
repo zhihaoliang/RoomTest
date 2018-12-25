@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.SecondActivity">
 
 
     <LinearLayout
@@ -40,14 +40,12 @@
             android:id="@+id/add"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:onClick="onClickView"
-            android:text="数据写入" />
+            android:text="第二个界面" />
 
         <Button
             android:id="@+id/del"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:onClick="onClickView"
             android:text="数据删除" />
 
 
@@ -55,21 +53,12 @@
             android:id="@+id/update"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:onClick="onClickView"
             android:text="数据更新" />
 
         <Button
             android:id="@+id/read"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:onClick="onClickView"
-            android:text="数据查询" />
-
-        <Button
-            android:id="@+id/jumpSecond"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:onClick="onClickView"
             android:text="数据查询" />
 
 
