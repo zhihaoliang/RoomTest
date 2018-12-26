@@ -1,4 +1,4 @@
-package com.zhihaoliang.roomtest.room.pair;
+package com.zhihaoliang.roomtest.entity.room.pair;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

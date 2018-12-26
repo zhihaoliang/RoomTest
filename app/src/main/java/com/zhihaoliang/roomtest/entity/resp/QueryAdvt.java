@@ -1,4 +1,4 @@
-package com.zhihaoliang.roomtest.entity;
+package com.zhihaoliang.roomtest.entity.resp;
 
 /**
  * 创建日期：2018/12/24
@@ -6,7 +6,6 @@ package com.zhihaoliang.roomtest.entity;
  * 作者:支豪亮
  */
 public class QueryAdvt {
-
     /**
      * orderNum : 1
      * updateUser : null

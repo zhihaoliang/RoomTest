@@ -1,12 +1,12 @@
-package com.zhihaoliang.roomtest.room;
+package com.zhihaoliang.roomtest.entity.room;
 
 import android.app.Application;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.zhihaoliang.roomtest.room.pair.KeyAndValue;
-import com.zhihaoliang.roomtest.room.pair.KeyAndValueDao;
+import com.zhihaoliang.roomtest.entity.room.pair.KeyAndValue;
+import com.zhihaoliang.roomtest.entity.room.pair.KeyAndValueDao;
 
 /**
  * 创建日期：2018/12/18
@@ -25,7 +25,6 @@ public abstract class AppDatabase extends RoomDatabase {
         }
         return instance;
     }
-
 
     public abstract KeyAndValueDao getKeyAndValueDao();
 
